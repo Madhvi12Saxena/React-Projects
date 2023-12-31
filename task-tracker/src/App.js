@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+// App.js
+import React, { useState } from 'react';
+import Header from './Header';
+import Tasks from './Tasks';
 import './App.css';
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (task) => {
+    setTasks([...tasks, task]);
+  };
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const toggleCompletion = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+      )
+    );
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header onAdd={addTask} />
+      <Tasks tasks={tasks} onDelete={deleteTask} onToggleCompletion={toggleCompletion} />
     </div>
   );
 }
