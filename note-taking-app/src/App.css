@@ -1,0 +1,38 @@
+/* src/App.css */
+
+.note-app {
+  display: flex;
+}
+
+.note-list {
+  width: 200px;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.note-list button {
+  margin-bottom: 10px;
+}
+
+.note-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.note-list li {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.note-list li.active {
+  background-color: #eee;
+}
+
+.note-editor {
+  flex: 1;
+  padding: 10px;
+}
+
+.note-editor .quill {
+  height: 100%;
+}
